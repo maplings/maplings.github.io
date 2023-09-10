@@ -1,62 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>首页</title>
-    <link type="text/css" rel="stylesheet" href="assets/css/normalize.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/normalize.css" />
     <script type="text/javascript">
-        //定义一个函数，用来为指定元素绑定响应函数
-        /*
-        * addEventListener()
-        * -通过这个方法也可以为元索绑定响应函数
-        * 参数:
-        * 1.事件的字符串，不要on
-        * 2.回调函数，当事件触发时该函数会被调用
-        * 3.是否在捕获阶段触发事件，需要一个布尔值，一般都传false
-        * IE8及以下不支持
-        * */
-        /*
-        * attachEvent()
-        * 在IE8中可以使用attachEvent()来绑定事件
-        * 参数:
-        * 1.事件的字符串，要on
-        * 2.回调函数
-        * */
-        /*
-        *addEventListener()中的this,是绑定事件的对象
-        *attachEvent()中的this,是window
-        *需要统一两个方法this
-        *参数:
-        *   obj 要绑定事件的对象
-        *   eventStr事件的字符串(不要on)
-        *   callback回调函数
-        */
-        function bind(obj ,eventStr ,callback){
-            if (obj.addEventListener) {
-                //大部分浏览器兼容方式
-                obj.addEventListener(eventStr, callback, false);
-            } else {
-                //IE8及以下
-                obj.attachEvent("on"+eventStr, function () {
-                    //在匿名函数中调用回调函数
-                    callback.call(obj);
-                });
-            }
+      //定义一个函数，用来为指定元素绑定响应函数
+      /*
+       * addEventListener()
+       * -通过这个方法也可以为元索绑定响应函数
+       * 参数:
+       * 1.事件的字符串，不要on
+       * 2.回调函数，当事件触发时该函数会被调用
+       * 3.是否在捕获阶段触发事件，需要一个布尔值，一般都传false
+       * IE8及以下不支持
+       * */
+      /*
+       * attachEvent()
+       * 在IE8中可以使用attachEvent()来绑定事件
+       * 参数:
+       * 1.事件的字符串，要on
+       * 2.回调函数
+       * */
+      /*
+       *addEventListener()中的this,是绑定事件的对象
+       *attachEvent()中的this,是window
+       *需要统一两个方法this
+       *参数:
+       *   obj 要绑定事件的对象
+       *   eventStr事件的字符串(不要on)
+       *   callback回调函数
+       */
+      function bind(obj, eventStr, callback) {
+        if (obj.addEventListener) {
+          //大部分浏览器兼容方式
+          obj.addEventListener(eventStr, callback, false);
+        } else {
+          //IE8及以下
+          obj.attachEvent('on' + eventStr, function () {
+            //在匿名函数中调用回调函数
+            callback.call(obj);
+          });
         }
-        window.onload = function () {
-            var btn01 = document.getElementById("btn01");
-            bind(btn01, "click", function () {
-                alert("1");
-            });
-            bind(btn01, "click", function () {
-                alert("2");
-            });
-        }
-
+      }
+      window.onload = function () {
+        var btn01 = document.getElementById('btn01');
+        bind(btn01, 'click', function () {
+          alert('1');
+        });
+        bind(btn01, 'click', function () {
+          alert('2');
+        });
+      };
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div>测试</div>
-    <button id="btn01">点击</button>
-</body>
+    <button type="button" id="btn01">点击</button>
+  </body>
 </html>
